@@ -1,5 +1,5 @@
 ---
-title: "Lecture 1: Introductions, recaptions and future work"
+title: "Lecture 1: Introductions, recaptions and planned work"
 author: "Dr Nemanja Vaci"
 institute: "University of Sheffield"
 date: "11/01/2021"
@@ -74,6 +74,12 @@ Departments: Psychology, Applied Statistics, Psychiatry
 <br/>
 <br/>
 - Practical exam (more information in a couple of weeks)
+<br/>
+<br/>
+<br/>
+<br/>
+Code for this lecture:
+[link](https://nvaci.github.io/Lecture_1_code/Lecture_1_Code.html)
 ???
 General overview of the course<br/>
 <br/>
@@ -144,6 +150,8 @@ Predictive interpretation (descriptive): If we compare babies that differ in the
 Model summarises the difference in average Height between the children that vary in their Age. <br/> <br/>
 Intercept is the average (predicted) score for children who are not born (0 - months)<br/> <br/>
 
+Type of intepretation usually depends on the strenght of the theoretical framework and methodological design. If you have a well developed theoretical assumptions and experimental design, this perhasp allows you to use counterfactual interpretation.  
+
 ---
 
 ## Interpretation: multiple predictors
@@ -157,9 +165,14 @@ lm2<-lm(Height~Age+Gender, data=Babies)
 lm2$coefficients
 ```
 
-Age: Comparing babies that have identical gender, but differ in their age by one month, the model predicts difference by a value of $\beta_1$ in their height on average<br/> <br/>
+Age: Comparing babies that have identical Gender, but differ in their Age by one month, the model predicts difference by a value of $\beta_1$ in their Height on average<br/> <br/>
 
-Gender: Comparing babies that have same age, but have different gender, the model predicts difference by a value of $\beta_2$ in their height on average <br/> <br/>
+Gender: Comparing babies that have same Age, but have different Gender, the model predicts difference by a value of $\beta_2$ in their Height on average <br/> <br/>
+
+???
+The model summarises difference in average Height between the children that vary in their Age and Gender. <br/> <br/>
+
+Intercept is the average (prediction) score for girls (0 on Gender variable) and that have 0 months in their Age
 
 ---
 
@@ -176,6 +189,8 @@ What is the model doing:
 Each level is assigned a value: Girls - 0, Boys - 1 <br/> <br/>
 The slope coefficient $\beta_2$ models the difference between the two levels
 
+???
+Additional reading on type of dummy codding in R: [link](https://stats.idre.ucla.edu/r/modules/coding-for-categorical-variables-in-regression-models/)
 ---
 
 ## Interpretation: interactions
@@ -191,10 +206,9 @@ lm3$coefficients
 
 Age: In the case of girls, comparing difference in babies older by month, the model predicts average difference by $\beta_1$ coefficient
 
-Gender: Difference between girls who are 0 months old and boys who are 0 months old is $\beta_2$ coefficient
+Gender: Expected difference between girls who are 0 months old and boys who are 0 months old is $\beta_2$ coefficient
 
 Age*Gender: Difference in the Age slope for Girls and Boys
-
 ---
 
 ## Interpretation: interactions
@@ -214,6 +228,8 @@ Weight: Keeping age at value of 0 and comparing babies that differ by 1 gram in 
 
 Age*Weight: The average difference between babies that differ by 1 month in their age, changes by $\beta_3$ with every 1 gram change in babies weight
 
+???
+
 ---
 
 ## What other information do we get from linear model?
@@ -223,6 +239,9 @@ lm1<-lm(Height~Age, data=Babies)
 summary(lm1)
 ```
 
+???
+Residuals - we talk about that later <br/> <br/>
+Coefficients with standard errors, as well as t-values. 
 ---
 
 ## Determination coefficient
@@ -397,8 +416,6 @@ cor(inequality[,c(2,8,12)], use="complete.obs")
 ```{r}
 mod1<-lm(avg_hatecrimes_per_100k_fbi~median_household_income, data=inequality)
 summary(mod1)
-plot(inequality$median_household_income, inequality$avg_hatecrimes_per_100k_fbi, xlab='Median household income',ylab='Avg hatecrimes')
-abline(mod1)
 ```
 
 ---
