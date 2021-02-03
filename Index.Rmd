@@ -1,11 +1,11 @@
 ---
-title: "Lecture 1: Introductions, recaptions and planned work"
+title: "Lecture 1: Outline of the planned work + linear regression"
 author: "Dr Nemanja Vaci"
 institute: "University of Sheffield"
 date: "11/01/2021"
 output:
   xaringan::moon_reader:
-    css: [default, default, default-fonts]
+    css: [default, default-fonts, my-theme.css]
     lib_dir: libs
     nature:
       highlightStyle: github
@@ -89,14 +89,14 @@ Code for this lecture:
 ???
 General overview of the course<br/>
 <br/>
-Focus on theory and applications, but also on how to use these models in R environment<br/>
+Focus on theory and applications, but also on how to use these models in the R environment<br/>
 <br/>
-Each lecture is planned to be supported by html presentation with main slide content and lecturer's notes + commented code that produced outputs in the presentation. Often, I will include additional content that you can explore, but it is not going to be used for any subsequent knowledge assessments. 
+Each lecture is planned to be supported by HTML presentation with main slide content and lecturer's notes + commented code that produced outputs in the presentation. Often, I will include additional content that you can explore, but it is not going to be used for any subsequent knowledge assessments. 
 ---
 
 ## Linear regression
 
-Method that summarises how the average values of numerical outcome variable vary over values defined by linear function of predictors ([visualisation](https://seeing-theory.brown.edu/regression-analysis/index.html#section1)) <br/> <br/>
+Method that summarises how the average values of numerical outcome variable vary over values defined by linear functions of predictors ([visualisation](https://seeing-theory.brown.edu/regression-analysis/index.html#section1)) <br/> <br/>
 
 --
 
@@ -109,9 +109,9 @@ plot(cars$speed, cars$dist, xlab='Predictor', ylab='Outcome')
 abline(lm(dist~speed, data=cars), lwd=2)
 ```
 ???
-Mathematical equation that estimates (simplifies) a dependent variable Y from a set of predictor variables or regressors X.<br/>
+The mathematical equation that estimates a dependent variable Y from a set of predictor variables or regressors X.<br/>
 
-Each regressor gets a weight/coefficient that is used to estimate Y. This coefficient is estimated according to some criteria, eg. minimises sum of squared errors or maximises the logarithm of the likelihood function. Additional reading: <br/> [Estimation of the parameters](https://data.princeton.edu/wws509/notes/c2s2) 
+Each regressor gets a weight/coefficient that is used to estimate Y. This coefficient is estimated according to some criteria, eg. minimises the sum of squared errors or maximises the logarithm of the likelihood function. Additional reading: <br/> [Estimation of the parameters](https://data.princeton.edu/wws509/notes/c2s2) 
 <br/><br/>
 
 $\epsilon$ - measure of accuracy of the model<br/>
@@ -153,10 +153,10 @@ Counterfactual interpretation (causal): Increase of 1 unit in predictor value - 
 Predictive interpretation (descriptive): If we compare babies that differ in their age by 1 month, we expect to see that older babies are taller by $\beta$ on average <br/> <br/>
 
 ???
-Model summarises the difference in average Height between the children that vary in their Age. <br/> <br/>
-Intercept is the average (predicted) score for children who are not born (0 - months)<br/> <br/>
+Model summarises the difference in average Height between the children as a function of their Age. <br/> <br/>
+Intercept is the average (predicted) score for children at birht (0 - months)<br/> <br/>
 
-Type of intepretation usually depends on the strenght of the theoretical framework and methodological design. If you have a well developed theoretical assumptions and experimental design, this perhasp allows you to use counterfactual interpretation.  
+Type of interpretation usually depends on the strength of the theoretical framework and methodological design. If you have well developed theoretical assumptions and experimental design, this perhaps allows you to use counterfactual interpretation.  
 
 ---
 
@@ -176,9 +176,9 @@ Age: Comparing babies that have identical Gender, but differ in their Age by one
 Gender: Comparing babies that have same Age, but have different Gender, the model predicts difference by a value of $\beta_2$ in their Height on average <br/> <br/>
 
 ???
-The model summarises difference in average Height between the children that vary in their Age and Gender. <br/> <br/>
+The model summarises difference in average Height between the children as a function of their Age and Gender. <br/> <br/>
 
-Intercept is the average (prediction) score for girls (0 on Gender variable) and that have 0 months in their Age
+Intercept is the average (prediction) score for girls (0 on Gender variable) and that have 0 months in their Age (birth).
 
 ---
 
@@ -196,7 +196,7 @@ Each level is assigned a value: Girls - 0, Boys - 1 <br/> <br/>
 The slope coefficient $\beta_2$ models the difference between the two levels
 
 ???
-Additional reading on type of dummy codding in R: [link](https://stats.idre.ucla.edu/r/modules/coding-for-categorical-variables-in-regression-models/)
+Additional reading on type of dummy coding in R: [link](https://stats.idre.ucla.edu/r/modules/coding-for-categorical-variables-in-regression-models/)
 ---
 
 ## Interpretation: interactions
@@ -212,11 +212,12 @@ lm3$coefficients
 
 Age: In the case of girls, comparing difference in babies older by month, the model predicts average difference by $\beta_1$ coefficient<br/> <br/>
 
-Gender: Expected difference between girls who are 0 months old and boys who are 0 months old is $\beta_2$ coefficient<br/> <br/>
+Gender: Expected difference between girls at birth and boys at birth is $\beta_2$ coefficient<br/> <br/>
 
 Age*Gender: Difference in the Age slope for Girls and Boys
 ???
-Mean for the Boys, when Age is 0: Intercept + $Gender_{boys}$<br/> <br/>
+Intercept is the predicted Girls Hight at birth <br/> <br/>
+Predicted Height for Boys, when Age is 0: Intercept + $Gender_{boys}$<br/> <br/>
 Slope for the Boys: Age + Age:$Gender_{Boys}$
 ---
 
@@ -233,14 +234,14 @@ lm4$coefficients
 
 Age: Keeping weight at value of 0 and comparing babies that differ by 1 month in their age, the model predicts average difference of $\beta_1$ 
 
-Weight: Keeping age at value of 0 and comparing babies that differ by 1 gram in their weight, the model predicts average difference of $\beta_2$
+Weight: Keeping age at value of 0 (birth) and comparing babies that differ by 1 gram in their weight, the model predicts average difference of $\beta_2$
 
 Age*Weight: The average difference between babies that differ by 1 month in their age, changes by $\beta_3$ with every 1 gram change in babies weight
 
 ???
 By including an interaction we allow a model to be fit differently to subsets of data.<br/> <br/>
 When to test the interactions: does the theory/clinical practice/previous studies postulate possibilities of interaction existing between your main effects? If yes, then proceed with caution. <br/> <br/>
-+ a good sign is when the main effects are relatively strong and large and they explain large amount of variation in the data
++ a good sign is when the main effects are relatively strong and large and they explain a large amount of variation in the data
 ---
 
 ## What other information do we get from linear model?
@@ -316,7 +317,7 @@ ggplot()+geom_linerange(data=Babies,aes(x=Age, ymin=lm1,ymax=lm0,colour=diff3), 
 
 ## Why is this important? 
 
-The general linear model is a basis for all other models covered by this course <br/> <br/>
+The general linear model is "basis" for all other models covered by this course <br/> <br/>
 
 In particular, more complex statistical models are often just generalisations of the general linear model <br/> <br/>
 
@@ -332,7 +333,8 @@ Babies$WeightStand=scale(Babies$Weight, scale=TRUE, center=TRUE)
 lmCorr<-lm(HeightStand~-1+WeightStand, data=Babies)
 lmCorr$coefficients
 ```
-
+???
+General linear model is a special case of the broad family of models (Generalized Linear Models - more next week)
 ---
 
 ## Asumptions
@@ -421,7 +423,7 @@ cor(inequality[,c(2,8,12)], use="complete.obs")
 ```
 
 ???
-In this situation, I am primarily using correlation to summarise collected data. High correlations might prepare me for collinearity issues in regressions, unexpected changes in the coefficients etc.  
+In this situation, I am primarily using correlation to summarise collected data. High correlations might prepare us for collinearity issues in regressions, unexpected changes in the coefficients etc.  
 ---
 
 ## Linear regression in R
@@ -599,16 +601,13 @@ Model diagnostics based on pre and post-modelling procedures  covered  by the le
 
 1. Approach <br/> <br/>
 We have two options: <br/> <br/>
-a) We meet every Friday, where I present the lecture (recorded) - a major gain is that we can always stop the presentation and discuss the content <br/> b) I pre-record the lecture and we use this time slot to discuss it - major gain, more time to discuss (workshop type approach), while major drawback is that you need to watch the lecture before we meet <br/> <br/>
+a) We meet every Friday, where I present the lecture (recorded) - a major gain is that we can always stop the presentation and discuss the content <br/> b) I pre-record the lecture and we use this time slot to discuss it - major gain, more time to discuss (workshop type approach), while the major drawback is that you need to watch the lecture before we meet <br/> <br/>
 2. Based on today's lecture (take into account that I was not going in depths of linear regression), would you prefer more:<br/><br/>
 a) Theory - mathematical aspect + explanations <br/>
 b) Examples - range of different problems <br/>
 c) Practice - more code and focus on understanding the data <br/>
 d) Stay the same, never change <br/> <br/>
-3. How good you are with Exploratory Factor Analysis? <br/><br/>
-a) What is exploratory factor analysis?<br/>
-b) I know basics <br/>
-c) I would know how to build, interpret and write up EFA results
+
 
 ---
 
@@ -619,6 +618,22 @@ First and second chapter of "Data Analysis Using Regression and Multilevel/Hiera
 First three chapter of "Regression Analysis and Linear Models: Concepts, Applications, and Implementation" by Richard B. Darlington and Andrew F. Hayes <br/> <br/>
 
 van Rij, J., Vaci, N., Wurm, L. H., & Feldman, L. B. (2020). Alternative quantitative methods in psycholinguistics: Implications for theory and design. Word Knowledge and Word Usage, 83-126.
+
+---
+
+## Exercise
+
+1. Find a data with an interesting measures and load it in R [FiveThirtyEight](https://data.fivethirtyeight.com/), [Kaggle](https://www.kaggle.com/) <br/><br/> 
+
+2. Make a histogram and density plot <br/> <br/>
+
+3. Calculation correlations between two or more variables <br/><br/>
+
+4. If there is published work that used the dataset, try to repeat the analysis (only few variables and only if it is linear regression) <br/><br/>
+
+5. Make a model where you have high or a perfect multicolinearity between two predictors (you can simulate data) <br/><br/>
+
+6. Make a model where you have $R^2=1$
 
 ---
 
