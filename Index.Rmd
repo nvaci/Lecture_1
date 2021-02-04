@@ -12,6 +12,35 @@ output:
       highlightLines: true
       ratio: "16:9"
       countIncrementalSlides: false
+    seal: false
+
+---
+
+class: center
+background-image: url("main2.png")
+
+## Lecture 1: Outline of the planned work + linear regression
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+
+### Dr Nemanja Vaci
+12/02/2021
 ---
 
 <style type="text/css">
@@ -34,6 +63,24 @@ pre {
 
 ## Press record
 
+```{r metathis, echo=FALSE, message=FALSE, warning=FALSE}
+library(metathis)
+meta() %>%
+  meta_name("github-repo" = "nvaci/Lecture_1") %>% 
+  meta_social(
+    title = "Lecture 1: Outline of the planned work + linear regression",
+    description = paste(
+      "First lecture for the Advanced Statistics course at Psychological Research Methods in Psychology master course",
+      "Sheffield 2021."
+    ),
+    url = "https://nvaci.github.io/Lecture_1/Index.html#1",
+    image= "https://nvaci.github.io/Lecture_1/Index.html#1",
+    og_type = "website",
+    og_author = "Nemanja Vaci",
+    twitter_card_type = "summary_large_image",
+    twitter_site = "@nemanja_vaci"
+  )
+```
 ---
 
 ## Background
@@ -92,6 +139,9 @@ General overview of the course<br/>
 Focus on theory and applications, but also on how to use these models in the R environment<br/>
 <br/>
 Each lecture is planned to be supported by HTML presentation with main slide content and lecturer's notes + commented code that produced outputs in the presentation. Often, I will include additional content that you can explore, but it is not going to be used for any subsequent knowledge assessments. 
+---
+class: center, inverse
+background-image: url("main.gif")
 ---
 
 ## Linear regression
