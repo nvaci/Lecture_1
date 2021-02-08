@@ -570,12 +570,18 @@ Studentized residuals
 $\epsilon_{Ti}=\frac{\epsilon_i}{\sigma_{(-i)}\sqrt{1-h_i}}$
 
 ???
+Studentized residual: division of a residual by an estimate of its standard devitation weighted by an estimate of leverage (hat values) <br/> <br/>
+
 Delete the observations one at the time and fit the model on the n-1 observations
+---
+class: center, inverse
+background-image: url("overfit.jpg")
 ---
 
 ## Normality
 
 ```{r,fig.width=10, fig.height=4,fig.align='center'}
+par(bty='n',mar = c(5, 4, .1, .1), cex=1.1, pch=16)
 car::qqPlot(mod3)
 ```
 
@@ -588,6 +594,7 @@ car::qqPlot(mod3)
 
 
 ```{r,fig.width=10, fig.height=4,fig.align='center'}
+par(bty='n',mar = c(5, 4, .1, .1), cex=1.1, pch=16)
 car:: residualPlot(mod3, type='rstudent')
 ```
 
@@ -596,15 +603,35 @@ car:: residualPlot(mod3, type='rstudent')
 ## Outliers and leverage points
 
 ```{r,fig.width=10, fig.height=6,fig.align='center'}
+par(bty='n',mar = c(5, 4, .1, .1), cex=1.1, pch=16)
 car:: influenceIndexPlot(mod3, vars=c("Cook","studentized"))
 ```
 
+???
+Cook's Distance of observation __i__ is defined as a sum of all the changes in the regression model when observation __i__ is removed from it. 
 ---
 
 ## Outliers and leverage points
 
 ```{r, fig.width=10, fig.height=6,fig.align='center'}
+par(bty='n',mar = c(5, 4, .1, .1), cex=1.1, pch=16)
 car:: influenceIndexPlot(mod3, vars=c("Bonf","hat"))
+```
+---
+
+## Autocorrelation between the residuals
+
+```{r, fig.width=10, fig.height=6,fig.align='center'}
+par(bty='n',mar = c(5, 4, .1, .1), cex=1.1, pch=16)
+stats::acf(resid(mod3))
+```
+---
+
+## Observed versus predicted values
+
+```{r, fig.width=10, fig.height=6,fig.align='center'}
+par(bty='n',mar = c(5, 4, .1, .1), cex=1.1, pch=16)
+plot(predict(mod3),mod3$model$avg_hatecrimes_per_100k_fbi, xlab='Predicted values (model 3)', ylab='Observed values (avg hatecrimes)')
 ```
 
 ???
@@ -656,7 +683,7 @@ a) We meet every Friday, where I present the lecture (recorded) - a major gain i
 a) Theory - mathematical aspect + explanations <br/>
 b) Examples - range of different problems <br/>
 c) Practice - more code and focus on understanding the data <br/>
-d) Stay the same, never change <br/> <br/>
+d) Stay same, never change <br/> <br/>
 
 
 ---
