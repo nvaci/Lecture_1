@@ -111,6 +111,8 @@ Departments: Psychology, Applied Statistics, Psychiatry
 ---
 ## Logistics
 
+- Lectures will be hosted on : https://github.com/nvaci/Advanced-Statistics
+
 - 7 lectures (5 different statistical procedures + additional content)
 <br/>
 <br/>
