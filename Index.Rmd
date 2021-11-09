@@ -63,24 +63,13 @@ pre {
 
 ## Press record
 
-```{r metathis, echo=FALSE, message=FALSE, warning=FALSE}
-library(metathis)
-meta() %>%
-  meta_name("github-repo" = "nvaci/Lecture_1") %>% 
-  meta_social(
-    title = "Lecture 1: Outline of the planned work + linear regression",
-    description = paste(
-      "First lecture for the Advanced Statistics course at Psychological Research Methods in Psychology master course",
-      "Sheffield 2021."
-    ),
-    url = "https://nvaci.github.io/Lecture_1/Index.html#1",
-    image= "https://nvaci.github.io/Lecture_1/Index.html#1",
-    og_type = "website",
-    og_author = "Nemanja Vaci",
-    twitter_card_type = "summary_large_image",
-    twitter_site = "@nemanja_vaci"
-  )
+```{r xaringanExtra-share-again, echo=FALSE}
+xaringanExtra::use_share_again()
+xaringanExtra::style_share_again(
+    background =  "rgba(0,0,0,0.2)"
+)
 ```
+
 ---
 
 ## Background
