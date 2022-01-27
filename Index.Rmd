@@ -1,8 +1,8 @@
 ---
-title: "Lecture 1: Outline of the planned work + linear regression"
+title: "Lecture 1: Outline of the planned work + glm"
 author: "Dr Nemanja Vaci"
 institute: "University of Sheffield"
-date: "11/01/2021"
+date: "11/02/2022"
 output:
   xaringan::moon_reader:
     css: [default, default-fonts, my-theme.css]
@@ -19,7 +19,7 @@ output:
 class: center
 background-image: url("main2.png")
 
-## Lecture 1: Outline of the planned work + linear regression
+## Lecture 1: Outline of the planned work + GLM
 <br/>
 <br/>
 <br/>
@@ -71,59 +71,27 @@ xaringanExtra::style_share_again(
 ```
 
 ---
-
-## Background
-
-.pull-left[
-BA in <b> Psychology </b><br/>
-MSC in <b> Applied Statistics</b><br/>
-(Novi Sad, Serbia)
-<br/>
-<br/>
-
-Phd in <b> Psychology </b> <br/>
-(Klagenfurt, Austria)
-<br/>
-<br/>
-
-Postdoc in <b>Data Science/Bioinformatics</b><br/>
-(Oxford, UK)
-<br/>
-<br/>
-
-Departments: Psychology, Applied Statistics, Psychiatry
-]
-.pull-right[
-<img src="Places.png", width = "120%">
-]
-
----
 ## Logistics
 
-- Lectures will be hosted on : https://github.com/nvaci/Advanced-Statistics
-
-- 7 lectures (5 different statistical procedures + additional content)
-<br/>
-<br/>
+- What are we planning to talk about : https://nemanjavaci.netlify.app/advanced-stats-course/course-handbook/<br/> <br/>
   a) Generalized linear models <br/>
   b) Structural equation modelling: path models and confirmatory factor analysis <br/>
   c) Mixed-effects models: cross-sectional and longitudinal data <br/> <br/>
-- Theory and practice
+- Theory and practice (1 + 1 hour):<br/><br/>
+a) Theoretical aspect – why and when would we want to use a certain statistical model <br/>
+b) Mathematical aspect – the mathematical basis of the model and how can we transform the data and parameters <br/>
+c) Practical aspect – using R to analyse the data and build the statistical models on real-world data
 <br/>
 <br/>
-- Data, statistical analysis and commented code
+- R statistical environment
 <br/>
 <br/>
-- R as a statistical environment
-<br/>
-<br/>
-- Practical exam (more information in a couple of weeks)
-<br/>
-<br/>
-<br/>
-<br/>
-Code for this lecture:
-[link](https://nvaci.github.io/Lecture_1_code/Lecture_1_Code.html)
+- Materials:<br/>
+a) Presentations (press __p__ for additional content)<br/>
+b) Commented R code
+([link](https://nvaci.github.io/Lecture_1_code/Lecture_1_Code.html) for this lecture)<br/>
+c) Slack channel to discuss statistical questions<br/>
+d) Course atlas (dictionary)
 ???
 General overview of the course<br/>
 <br/>
